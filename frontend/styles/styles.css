@@ -1,0 +1,45 @@
+main {
+  margin: 3rem auto;
+  max-width: 50rem;
+  text-align: center;
+  width: 95%;
+}
+
+main h1 {
+  color: rgb(202, 158, 62);
+  font-family: "Roboto Condensed", "Roboto", sans-serif;
+}
+
+main ul {
+  display: flex;
+  list-style: none;
+  margin: 3rem 0;
+  padding: 0;
+}
+
+main li {
+  border-radius: 6px;
+  height: 10rem;
+  margin: 0 1rem;
+  overflow: hidden;
+  width: 20rem;
+}
+
+main li a {
+  align-items: center;
+  background-color: rgb(48, 42, 31);
+  box-sizing: border-box;
+  color: rgb(218, 205, 183);
+  display: flex;
+  font-size: 1.25rem;
+  height: 100%;
+  justify-content: center;
+  padding: 1rem;
+  text-decoration: none;
+  width: 100%;
+}
+
+main li a:hover,
+main li a:active {
+  background-color: rgb(100, 81, 43);
+}
