@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Test Restaurant",
+    "address": "69 Test Street, Bellville",
+    "cuisine": "Boerewors",
+    "website": "https://www.test.com",
+    "description": "Very tasty and lekker"
+  },
+  {
+    "name": "Test 2",
+    "address": "100 Piet Street",
+    "cuisine": "Italian",
+    "website": "https://www.mytestsite.com",
+    "description": "If you love pasta"
+  }
+]
