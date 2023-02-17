@@ -33,9 +33,21 @@ app.get("/restaurants", (req, res) => {
   });
 });
 
+// working with a route using dynamic parameterd the :id is an eg
 app.get("/restaurants/:id", (req, res) => {
-  const restaurantId = req.params.id;
-  res.render("restaurant-detail", { rid: restaurantId });
+  const restaurantId = req.params.id; // reading parameter from url
+
+  const filePath = path.join(__dirname, "data", "restaurants.json");
+  const fileData = fs.readFileSync(filePath);
+  const storedRestaurants = JSON.parse(fileData);
+
+  for (const restaurant of storedRestaurants) {
+    if (restaurant.id === restaurantId) {
+      return res.render("restaurant-detail", { restaurant: restaurant });
+    }
+  }
+
+  res.status(404).render("404");
 });
 
 app.get("/about", (req, res) => {
@@ -54,15 +66,21 @@ app.post("/recommend", (req, res) => {
   const restaurant = req.body; // new data from form to be pushed later
   restaurant.id = uuid.v4(); // adding new property to the object
 
-  const filePath = path.join(__dirname, "data", "restaurants.json"); // path of file to be used
-
-  const fileData = fs.readFileSync(filePath); // read file
-  const storedRestaurants = JSON.parse(fileData); // convert to JS object existing data from file
+  const storedRestaurants = getStoredRestaurants();
 
   storedRestaurants.push(restaurant); // Add newly entered data from form and push to end of object
 
-  fs.writeFileSync(filePath, JSON.stringify(storedRestaurants)); // to JSON object string and write to file with new data
+  storeRestaurants(storedRestaurants);
   res.redirect("/confirm");
+});
+
+// middleware is here, because this must be run only if previous routes in file failed
+app.use((req, res) => {
+  res.status(404).render("404");
+});
+
+app.use((error, req, res, next) => {
+  res.status(500).render("500");
 });
 
 app.listen(3000);
