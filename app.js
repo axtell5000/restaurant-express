@@ -1,5 +1,7 @@
 const fs = require("fs");
 const path = require("path");
+
+const uuid = require("uuid");
 const express = require("express");
 
 const app = express();
@@ -31,6 +33,11 @@ app.get("/restaurants", (req, res) => {
   });
 });
 
+app.get("/restaurants/:id", (req, res) => {
+  const restaurantId = req.params.id;
+  res.render("restaurant-detail", { rid: restaurantId });
+});
+
 app.get("/about", (req, res) => {
   res.render("about");
 });
@@ -45,6 +52,8 @@ app.get("/recommend", (req, res) => {
 
 app.post("/recommend", (req, res) => {
   const restaurant = req.body; // new data from form to be pushed later
+  restaurant.id = uuid.v4(); // adding new property to the object
+
   const filePath = path.join(__dirname, "data", "restaurants.json"); // path of file to be used
 
   const fileData = fs.readFileSync(filePath); // read file

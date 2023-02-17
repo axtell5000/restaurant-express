@@ -1,5 +1,6 @@
 [
   {
+    "id": "r1",
     "name": "Test Restaurant",
     "address": "69 Test Street, Bellville",
     "cuisine": "Boerewors",
@@ -7,10 +8,19 @@
     "description": "Very tasty and lekker"
   },
   {
+    "id": "r2",
     "name": "Test 2",
     "address": "100 Piet Street",
     "cuisine": "Italian",
     "website": "https://www.mytestsite.com",
     "description": "If you love pasta"
+  },
+  {
+    "name": "Wimpy",
+    "address": "33 Maynard Mall",
+    "cuisine": "Fast Food",
+    "website": "https://www.wimpy-test.com",
+    "description": "Food for people on the go",
+    "id": "1abed67c-ebc2-4cc2-af52-95f36bebc145"
   }
 ]
